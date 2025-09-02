@@ -1,3 +1,9 @@
+# REST Framework: Allow anonymous API access
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
 # Custom user model
 AUTH_USER_MODEL = 'octofit_tracker.User'
 """
@@ -103,6 +109,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOW_METHODS = ['*']
+
+# codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    CORS_ALLOWED_ORIGINS = [
+        f"https://{codespace_name}-3000.app.github.dev"
+    ]
 
 
 # Password validation
